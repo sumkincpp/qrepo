@@ -36,6 +36,8 @@ bool QueryProcessor :: processQueryFile () {
 	buffer << file.rdbuf();
 	_query = buffer.str();
 
+	//std::cout << _query;
+
 	file.close();
 
 	return true;

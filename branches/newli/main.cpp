@@ -46,8 +46,10 @@ int main() {
 	//-------------------------------------------
 
 	try {
-		NewLi::DataResolver r("localhost", "/test.html");
+		NewLi::DataResolver r("localhost", "/");
 		r.readData();
+
+		//std::cout << "Hello";
 
 		std::cout << r.resBody();
 		}

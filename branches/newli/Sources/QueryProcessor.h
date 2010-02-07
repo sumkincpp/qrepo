@@ -19,7 +19,7 @@ using namespace boost::xpressive;
 
 namespace NewLi {
 
-const std::string QueryDirectory = "queries/";
+const std::string QueryDirectory = "";//"queries/";
 const std::string QueryDefaultFile = "default.txt";
 
 class QueryProcessor {

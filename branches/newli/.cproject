@@ -19,7 +19,7 @@
 <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.660908765" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
 <targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.1665326919" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
 <builder buildPath="${workspace_loc:/newli/Debug}" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1615533553" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
-<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.1186120231" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
+<tool command="as" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG}${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.1186120231" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1364451703" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.756294356" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -28,6 +28,7 @@
 <option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.1872014832" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1436861385" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;C:\code\boost_1_41_0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\code\boost_1_40_0&quot;"/>
 </option>
 <option id="gnu.cpp.compiler.option.other.other.897626668" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_WIN32_WINNT=0x0501" valueType="string"/>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1398544387" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -41,6 +42,7 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.1257855492" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
 <option id="gnu.cpp.link.option.paths.577130232" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 <listOptionValue builtIn="false" value="&quot;C:\code\boost_1_41_0\stage\lib&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\code\boost_1_40_0\stage\lib&quot;"/>
 </option>
 <option id="gnu.cpp.link.option.libs.739903578" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 <listOptionValue builtIn="false" value="boost_thread-mgw34-mt"/>
@@ -836,7 +838,7 @@
 <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.release.923273016" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.release">
 <targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.release.236958793" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.release"/>
 <builder buildPath="${workspace_loc:/newli/Release}" id="cdt.managedbuild.tool.gnu.builder.mingw.base.66206381" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
-<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release.322720215" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release">
+<tool command="as" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG}${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release.322720215" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release">
 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1229583789" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1231023016" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -845,6 +847,7 @@
 <option id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.1961242422" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1900539942" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;C:\code\boost_1_41_0\&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\code\boost_1_40_0&quot;"/>
 </option>
 <option id="gnu.cpp.compiler.option.other.other.962671852" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_WIN32_WINNT=0x0501" valueType="string"/>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1341542567" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -858,6 +861,7 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release.2002075804" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release">
 <option id="gnu.cpp.link.option.paths.762874314" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 <listOptionValue builtIn="false" value="&quot;C:\code\boost_1_41_0\stage\lib&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\code\boost_1_40_0\stage\lib&quot;"/>
 </option>
 <option id="gnu.cpp.link.option.libs.218455136" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 <listOptionValue builtIn="false" value="boost_thread-mgw34-mt"/>

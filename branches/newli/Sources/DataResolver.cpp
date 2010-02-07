@@ -42,7 +42,7 @@ int DataResolver :: readData() {
 	boost::asio::streambuf request;
 	std::ostream request_stream(&request);
 
-	_p();
+	request_stream << _p();
 
 	/*request_stream << "GET " << _path << " HTTP/1.0\r\n";
 	request_stream << "Host: " << _host << "\r\n";
