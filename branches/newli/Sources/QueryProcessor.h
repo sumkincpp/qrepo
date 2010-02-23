@@ -8,12 +8,15 @@
 #ifndef QUERYPROCESSOR_H_
 #define QUERYPROCESSOR_H_
 
+#include <conio.h>
+
 #include <map>
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <boost/xpressive/xpressive.hpp>
 #include <boost/xpressive/regex_actions.hpp>
+
 
 using namespace boost::xpressive;
 
@@ -27,6 +30,8 @@ class QueryProcessor {
 		std::string _queryFile;
 
 		std::string _query;
+
+		bool writeContentLength();
 
 	public:
 		QueryProcessor(std::string host, std::string path = '/');

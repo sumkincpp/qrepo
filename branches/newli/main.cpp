@@ -19,6 +19,20 @@ using namespace rapidxml;
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 int main() {
+	try {
+		NewLi::DataResolver r("www.liveinternet.ru", "/offline_main.php");
+		r.setQueryFile("../xmlrequest.txt");
+		r.readData();
+
+		//std::cout << "Hello";
+
+		std::cout << r.resBody();
+		}
+	catch (std::exception& e)
+		{
+		std::cout << "Exception: " << e.what() << "\n";
+		}
+
 //	int a[5]={0};
 //	std::cout << sizeof(a)/sizeof(int);
 //	std::cout << (char)tolower('H');
@@ -44,7 +58,7 @@ int main() {
 	print(std::cout, doc, 0);*/
 
 	//-------------------------------------------
-
+/*
 	try {
 		NewLi::DataResolver r("localhost", "/");
 		r.readData();
@@ -56,7 +70,7 @@ int main() {
 	catch (std::exception& e)
 		{
 		std::cout << "Exception: " << e.what() << "\n";
-		}
+		}*/
 	/*std::cout << std::endl << t.elapsed();*/
 	getch();
 	}

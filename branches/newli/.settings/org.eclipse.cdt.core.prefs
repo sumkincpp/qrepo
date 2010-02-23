@@ -1,4 +1,4 @@
-#Thu Feb 04 22:37:58 MSK 2010
+#Tue Feb 23 19:45:06 MSK 2010
 eclipse.preferences.version=1
 indexer/filesToParseUpFront=cstdarg, cstdio, sys/resource.h, ctime, stdarg.h, stddef.h, sys/types.h
 indexer/indexAllFiles=true
