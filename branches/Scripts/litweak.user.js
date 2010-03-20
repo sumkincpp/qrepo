@@ -14,3 +14,11 @@ s.setAttributeNode(attr);
 
 var el = document.getElementsByClassName("gl_Top-nav-menu");
 el[0].appendChild(s);
+
+// Removing some kind of toolbars
+function removeElement(id) {
+  var element = document.getElementById(id);
+  element.parentNode.removeChild(element);
+}
+
+removeElement(":gl_Apps");
