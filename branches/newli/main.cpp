@@ -12,13 +12,22 @@
 
 using namespace rapidxml;
 
-#define foreach         BOOST_FOREACH
-#define reverse_foreach BOOST_REVERSE_FOREACH
+//#define foreach         BOOST_FOREACH
+//#define reverse_foreach BOOST_REVERSE_FOREACH
 
 #include "Sources/DataResolver.h"
 
+#include "gtk/MainWindow.h"
+
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-int main() {
+int main(int argc, char* argv[]) {
+	Gtk::Main kit(argc, argv);
+
+	MainWindow window;
+
+	kit.run(window);
+	//Gtk::Window* w = new MainWindow();
+	/*
 	try {
 		NewLi::DataResolver r("www.liveinternet.ru", "/offline_main.php");
 		r.setQueryFile("../xmlrequest.txt");
@@ -32,7 +41,7 @@ int main() {
 		{
 		std::cout << "Exception: " << e.what() << "\n";
 		}
-
+*/
 //	int a[5]={0};
 //	std::cout << sizeof(a)/sizeof(int);
 //	std::cout << (char)tolower('H');
@@ -42,7 +51,7 @@ int main() {
 	//-------------------------------------------
 /*	std::string hello( "Hello, world!" );
 
-	foreach( char ch, hello )	{
+	BOOST_FOREACH( char ch, hello )	{
 		std::cout << ch;
 		}*/
 
