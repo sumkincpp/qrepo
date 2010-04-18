@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
 		std::cout << "Exception: " << e.what() << "\n";
 		}*/
 	/*std::cout << std::endl << t.elapsed();*/
-	getch();
+	return 0;
 	}
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
