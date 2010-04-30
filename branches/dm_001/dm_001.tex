@@ -3,10 +3,21 @@
 \usepackage[cp1251]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
-\usepackage[pdftex]{graphicx}
+% \usepackage[pdftex]{graphicx}
+% \usepackage{epsfig} 
+
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex]{graphicx,color}
+\else
+  \usepackage[dvips]{graphicx,color}
+\fi
+
+%\DeclareGraphicsRule{.jpg}{eps}{*}{`jpeg2ps #1}
+\usepackage{epsfig}
 \graphicspath{{images/}}
 
-\usepackage[ps2pdf]{hyperref}
+% \usepackage[ps2pdf]{hyperref}
 
 %\usepackage[pdftex]{graphicx}
 
@@ -20,7 +31,7 @@
 
 \renewcommand{\baselinestretch}{1.4}
 
-\font\mini=cmr10 at 2pt
+% \font\mini=cmr10 at 2pt
 
 %\makeatletter
 %\renewcommand\chapter{\par
@@ -158,9 +169,9 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 
 \section{Определение плотности электронов вблизи Земли}
 
-\begin{figure}[!b]%! b
+\begin{figure}[ht]%!b
 \center{
-	\includegraphics[width=0.9\linewidth]{ATICResults.png} \\\
+	\includegraphics[width=0.5\textwidth]{ATICResults.eps} \\\
 	\footnotesize{Рис.~\ref{img:ATICResults} График зависимости потока электронов от энергии}
 	}
 \label{img:ATICResults}
