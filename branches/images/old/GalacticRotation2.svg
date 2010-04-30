@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="841.88975pt" height="595.27559pt" id="svg2" sodipodi:version="0.32" inkscape:version="0.42" sodipodi:docbase="C:\DOCUME~1\phibbs\MYDOCU~1\MYPICT~1\WIKIPE~1" sodipodi:docname="GalacticRotation2.svg" inkscape:export-filename="C:\Documents and Settings\phibbs\My Documents\My Pictures\Wikipedia\GalacticRotation2.png" inkscape:export-xdpi="242.89000" inkscape:export-ydpi="242.89000">
+  <defs id="defs4">
+    <marker inkscape:stockid="Arrow2Send" orient="auto" refY="0.0" refX="0.0" id="Arrow2Send" style="overflow: visible;">
+      <path sodipodi:nodetypes="cccc" id="path2148" style="fill-rule: evenodd; stroke-width: 0.625; stroke-linejoin: round;" d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z " transform="scale(0.3, 0.3) rotate(180) translate(-5)"/>
+    </marker>
+    <marker inkscape:stockid="Arrow1Sstart" orient="auto" refY="0.0" refX="0.0" id="Arrow1Sstart" style="overflow: visible;">
+      <path sodipodi:nodetypes="ccccc" id="path983" d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z " style="fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1pt; marker-start: none;" transform="scale(0.2, 0.2)"/>
+    </marker>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.87488890" inkscape:cx="526.18109" inkscape:cy="399.20718" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="true" inkscape:grid-points="true" gridspacingx="10.000000px" gridspacingy="10.000000px" inkscape:window-width="1152" inkscape:window-height="817" inkscape:window-x="-4" inkscape:window-y="-4"/>
+  <metadata id="metadata7">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" style="display: inline;">
+    <g id="g13561" transform="matrix(6.28154, 0, 0, 6.28154, -243.578, -3689.63)">
+      <path id="path1310" d="M 50.480392,594.09448 L 50.480392,694.09448 L 198.51961,694.09448" style="fill: none; fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1.5; stroke-linecap: butt; stroke-linejoin: miter; marker-start: url(#Arrow1Sstart); marker-end: url(#Arrow2Send); stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1;"/>
+      <text id="text2180" y="703.449" x="169.689" style="font-size: 7.01352px; font-style: normal; font-weight: normal; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: Bitstream Vera Sans;" xml:space="preserve"><tspan y="703.449" x="169.689" id="tspan2182" sodipodi:role="line">Distance</tspan></text>
+      <text transform="matrix(-1.27123e-17, -1, 1, -1.27123e-17, 0, 0)" xml:space="preserve" style="font-size: 7.01352px; font-style: normal; font-weight: normal; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: Bitstream Vera Sans;" x="-620.642" y="45.8543" id="text2184"><tspan id="tspan2188" sodipodi:role="line" x="-620.642" y="45.8543">Velocity</tspan></text>
+    </g>
+    <g id="g11489" transform="matrix(6.28154, 0, 0, 6.28154, -243.578, -3689.63)">
+      <path sodipodi:nodetypes="cccc" id="path2190" d="M 56.204519,683.03047 C 57.088989,663.38841 57.951859,626.23178 61.252862,624.77185 C 71.683759,621.02418 80.808740,632.79735 96.667237,645.12711 C 119.50852,660.90487 155.27675,668.02914 190.00000,671.55514" style="fill: none; fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dashoffset: 0pt; stroke-opacity: 1;"/>
+      <text id="text5263" y="672.502" x="191.468" style="font-size: 7.34003px; font-style: normal; font-weight: normal; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: Bitstream Vera Sans;" xml:space="preserve"><tspan y="672.502" x="191.468" id="tspan5265" sodipodi:role="line">A</tspan></text>
+    </g>
+    <g id="g11494" transform="matrix(6.28154, 0, 0, 6.28154, -243.578, -3689.63)">
+      <path sodipodi:nodetypes="ccccccc" id="path4521" d="M 56.178494,683.04721 C 56.738549,672.19580 57.272927,665.84476 57.272927,654.74872 C 57.607262,645.62731 58.641909,636.81224 60.094020,627.36636 C 60.555002,622.65983 62.453077,620.85284 68.824181,620.85284 C 76.742778,620.85284 83.195632,623.46968 92.625942,623.46968 C 103.05960,623.53616 133.73173,619.14744 143.57246,619.50938 C 154.37982,619.50938 184.91043,620.81138 190.00000,621.21802" style="fill: none; fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"/>
+      <text xml:space="preserve" style="font-size: 7.34003px; font-style: normal; font-weight: normal; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: Bitstream Vera Sans;" x="190.805" y="623.632" id="text5267"><tspan sodipodi:role="line" id="tspan5269" x="190.805" y="623.632">B</tspan></text>
+    </g>
+    <rect style="opacity: 0; fill: none; stroke: rgb(255, 255, 255); stroke-width: 0pt; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0pt; stroke-opacity: 1;" id="rect11511" width="1047.3857" height="743.72510" x="0.00000000" y="0.36940214"/>
+  </g>
+</svg>
