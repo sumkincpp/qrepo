@@ -14,7 +14,6 @@
 \fi
 
 %\DeclareGraphicsRule{.jpg}{eps}{*}{`jpeg2ps #1}
-\usepackage{epsfig}
 \graphicspath{{images/}}
 
 % \usepackage[ps2pdf]{hyperref}
@@ -85,22 +84,12 @@ Messier 31 и от некоторых карликовых спутников Млечного Пути, ожидаемое при тако
 % --------------------------------------------------------------------------------------------
 \section{Синхротронное излучение}
 
-Хорошо известно, что ускоренные заряженные частицы в магнитном поле $H$ излучают. Наиболее интересным 
-случаем является излучение частиц, движущихся с релятивистскими скоростями. Излучение 
-релятивистской частицы, движущейся по окружности является \textit{синхротронным}.
-
-\subsection{Мощность СИ}
-
-Для изучаемой галактики наблюдаемая на Земле интенсивность синхротронного излучения
-на конкретной частоте выражается формулой:
-\begin{equation}\label{eq:IntenseOnFreqF}
-I(\gamma) = \frac{1}{4{\pi}d^2}\int N_E \frac{dI}{d\nu}dVdE = \frac{1}{4{\pi}d^2}\int N_E \frac{e^2\nu}{3c^3}dVdE
-\end{equation}
-где $d$ - расстояние до галактики, \\\
-$N_E$ - плотность числа электронов энергии E в данной точке пространства 
+Электрон-позитронные пары $e^{\pm}$ получаемые в результате распада или аннигиляции ТМ под действием 
+магнитного поля $B$ будут испытывать синхротронное излучение. Для полей $B\sim \mu G$ СИ является
+доминирующим по сравнению с другими явлениями потери энергии - 
 
 Мощность $\mathcal{P}(E,r)$ синхротронного излучения единичного электрона с энергией $E$ в диапозоне частот
-$(\nu, \nu+d\nu)$ в постоянном магнитном поле $B$ может быть определена следующим образом :
+$(\nu, \nu+d\nu)$ в постоянном магнитном поле $B$ может быть определена следующим образом\cite{GammaRayTests,DecayingDM} :
 \begin{equation}\label{eq:PowerOnFreq}
 \mathcal{P}(E,r) = \frac{dW}{dE} = \frac{1}{4{\pi}}\frac{e^3 B}{m_e}F(\nu/\nu_c)
 %\frac{2e^3B}{9m_e}\int \frac{d\mathcal{N}}{dE} \delta(f(E))
@@ -218,12 +207,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 		\begin{center}
 			\begin{tabular}{llll}
 			\hline
-			 $E$         & $E^3dF/dE$ 
-										 					& $dF/dE$ 
-										 					         & $dN/dE|_{\odot}$\\
-			 $[GeV]$     & $[GeV^2/(m^2{\cdot}s{\cdot}sr)]$     
-			                        & $[1/(GeV{\cdot}m^2{\cdot}s{\cdot}sr)]$ 
-			                                 & $[1/(GeV{\cdot}m^3)]$ \\
+			 $E$         & $E^3dF/dE$ & $dF/dE$ & $dN/dE|_{\odot}$\\
+			 $[GeV]$     & $[GeV^2/(m^2{\cdot}s{\cdot}sr)]$ & $[1/(GeV{\cdot}m^2{\cdot}s{\cdot}sr)]$ & $[1/(GeV{\cdot}m^3)]$ \\
 			\hline
 			 $45$        & $10$     & $1.1{\cdot}10^{-4}$ & $4.6{\cdot}10^{-12}$ \\
 			 $100$       & $29$     & $2.9{\cdot}10^{-5}$ & $1.2{\cdot}10^{-12}$ \\
@@ -245,14 +230,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 		\begin{center}
 			\begin{tabular}{lllll}
 			\hline
-			 $E$         & $C_1(E)$ 
-										 					& $C_2(E)$ 
-										 					         & $ \frac{{\nu}_s(E)}{3}, M31 $ 
-										 					              & $ \frac{{\nu}_s(E)}{3}, SagDEG$ \\
-			 $[GeV]$     & $[1/GeV^2]$     
-			                        & $[m^3/GeV^3]$ 
-			                                 & $[Hz]$
-			                                      & $[Hz]$ \\
+			 $E$         & $C_1(E)$ & $C_2(E)$ & $ \frac{{\nu}_s(E)}{3}, M31 $ & $ \frac{{\nu}_s(E)}{3}, SagDEG$ \\
+			 $[GeV]$     & $[1/GeV^2]$ & $[m^3/GeV^3]$ & $[Hz]$ & $[Hz]$ \\
 			\hline
 			 $45$        & $1.5{\cdot}10^{-17}$ & $5.1{\cdot}10^{-23}$ & $4.4{\cdot}10^{10}$ & $1.1{\cdot}10^{10}$ \\
 			 $100$       & $4.0{\cdot}10^{-18}$ & $1.3{\cdot}10^{-23}$ & $2.2{\cdot}10^{11}$ & $5.4{\cdot}10^{10}$ \\
@@ -298,12 +277,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 		\begin{center}
 			\begin{tabular}{lllll}
 			\hline
-			 $E$         & ${\nu}$ 
-										 					& $\frac{d\mathcal{N}(E)}{dE}$ 
-										 					         & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$     
-			                        & $[1/GeV]$ 
-			                                 & $[Jy]$ \\
+			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
 			\hline
 			 $45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
 			 $100$       & $2.2{\cdot}10^{11}$ & $3.1{\cdot}10^{51}$ & $1.8{\cdot}10^{-5}$ \\
@@ -326,12 +301,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 		\begin{center}
 			\begin{tabular}{lllll}
 			\hline
-			 $E$         & ${\nu}$ 
-										 					& $\frac{d\mathcal{N}(E)}{dE}$ 
-										 					         & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$     
-			                        & $[1/GeV]$ 
-			                                 & $[Jy]$ \\
+			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
 			\hline
 			 $45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
 			 $100$       & $2.2{\cdot}10^{11}$ & $2.9{\cdot}10^{51}$ & $1.7{\cdot}10^{-5}$ \\
@@ -374,12 +345,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 		\begin{center}
 			\begin{tabular}{lllll}
 			\hline
-			 $E$         & ${\nu}$ 
-										 					& $\frac{d\mathcal{N}(E)}{dE}$ 
-										 					         & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$     
-			                        & $[1/GeV]$ 
-			                                 & $[Jy]$ \\
+			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
 			\hline
 			 $45$        & $1.1{\cdot}10^{10}$ & $1.7{\cdot}10^{48}$ & $1.0{\cdot}10^{-5}$ \\
 			 $100$       & $5.4{\cdot}10^{10}$ & $4.4{\cdot}10^{47}$ & $2.7{\cdot}10^{-6}$ \\
@@ -399,12 +366,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 		\begin{center}
 			\begin{tabular}{lllll}
 			\hline
-			 $E$         & ${\nu}$ 
-										 					& $\frac{d\mathcal{N}(E)}{dE}$ 
-										 					         & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$     
-			                        & $[1/GeV]$ 
-			                                 & $[Jy]$ \\
+			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
 			\hline
 			 $45$        & $1.1{\cdot}10^{10}$ & $4.0{\cdot}10^{49}$ & $2.4{\cdot}10^{-4}$ \\
 			 $100$       & $5.4{\cdot}10^{10}$ & $1.0{\cdot}10^{49}$ & $1.0{\cdot}10^{-5}$ \\
@@ -440,17 +403,28 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 % --------------------------------------------------------------------------------------------
 \begin{thebibliography}{100}
 
-\bibitem{ATICcol} ATIC collaboration, Nature 456(2008) 362
-\bibitem{LandayPotential} Л.Д. Ландау и Е.М. Лифшиц, <<Теория Поля>>, Том II, стр. 224, 1967.
+\bibitem{ATICcol} ATIC collaboration, Nature 456 (2008) | doi:10.1038/nature07477
+\bibitem{PAMELA} PAMELA collaboration, arXiv:0810.4994[astro-ph].    
+\bibitem{PAMELA2} PAMELA collaboration, arXiv:0810.4995[astro-ph].    
+\bibitem{LandayL} Landau-Lifschitz, Vol. 4.
 \bibitem{NED} NASA/IPAC Extragalactic Database (NED), http://nedwww.ipac.caltech.edu/
 \bibitem{SIMBAD} SIMBAD Astronomical Database, http://simbad.u-strasbg.fr/simbad/
 \bibitem{NFW} J.F. Navarro, C.S. Frenk and S.D. White, Astrophys. J. 462 (1996) 563 [astro-ph/9508025]
 \bibitem{Boyarsky} A. Boyarsky, D. Iakubovskyi, O. Ruchayskiy, V. Savchenko, arXiv:0709.2301
-\bibitem{ATICcolEx} ATIC collaboration, Nature 456 (2008) | doi:10.1038/nature07477, pg. 4
+
+\bibitem{Ishiwata} Koji Ishiwata, Shigeki Matsumoto, Takeo Moroi, arXiv:0811.4492[astro-ph].  
+% Synchrotron Radiation from the Galactic Center in Decaying Dark Matter Scenario     
+
+\bibitem{DecayingDM} Enrico Nardi, Francesco Sannino, Alessandro Strumia, arXiv:0811.4153[astro-ph].
+% Decaying Dark Matter can explain the electron/positron excesses
+
+\bibitem{GammaRayTests} Gianfranco Bertone, Marco Cirelli, Alessandro Strumia, Marco Taoso, arXiv:0811.3744[astro-ph].
+% Gamma-ray and radio tests of the e+e- excess from DM annihilations
+
+\bibitem{ICconstraints} Marco Cirelli, Paolo Panci,  arXiv:0904.3830[astro-ph].
+% Inverse Compton constraints on the Dark Matter e+e- excesses
 
 \end{thebibliography}
 % --------------------------------------------------------------------------------------------
-
-
-\tableofcontents
+% \tableofcontents
 \end{document}
