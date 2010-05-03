@@ -1,10 +1,14 @@
 \documentclass[a4paper,12pt]{article}
-\usepackage[T2A]{fontenc}
+\usepackage[T2A]{fontenc} 
 \usepackage[cp1251]{inputenc}
+% \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
-% \usepackage[pdftex]{graphicx}
-% \usepackage{epsfig} 
+ 
+% ############################### 
+
+\usepackage{multicol}
+\usepackage{multirow}
 
 \usepackage{ifpdf}
 \ifpdf
@@ -13,13 +17,14 @@
   \usepackage[dvips]{graphicx,color}
 \fi
 
-%\DeclareGraphicsRule{.jpg}{eps}{*}{`jpeg2ps #1}
+\ifx\pdfoutput\undefined
+\usepackage[dvips,bookmarks]{hyperref}	% This is for arXiv.org
+\else
+\usepackage{hyperref}	% This is for pdftex
+\fi
+
 \graphicspath{{images/}}
-
-% \usepackage[ps2pdf]{hyperref}
-
-%\usepackage[pdftex]{graphicx}
-
+% ############################### 
 \usepackage{geometry} % поля страницы
 \geometry{left=2cm}
 \geometry{right=2cm}
@@ -30,8 +35,6 @@
 
 \renewcommand{\baselinestretch}{1.4}
 
-% \font\mini=cmr10 at 2pt
-
 %\makeatletter
 %\renewcommand\chapter{\par
 %  \thispagestyle{plain}
@@ -41,6 +44,8 @@
 %\makeatother
 
 % \pagestyle{headings} %- верхний колонтитул
+
+\hypersetup{colorlinks,bookmarksopen,bookmarksnumbered,pdfstartview=FitH,unicode=true}
 
 \begin{document}
 %\setcounter{chapter}{1}
@@ -63,7 +68,7 @@
 \end{quote}
 % --------------------------------------------------------------------------------------------
 \section{Введение}
-\addcontentsline{toc}{section}{Введение}
+% \addcontentsline{toc}{section}{Введение}
 Ряд астрофизических и космологических наблюдений показывает очевидность существования так
 называемой темной материи, однако никаких бесспорных методов её обнаружения не предложено,
 и её свойства до сих пор остаются достаточно непонятными.
@@ -86,12 +91,18 @@ Messier 31 и от некоторых карликовых спутников Млечного Пути, ожидаемое при тако
 
 Электрон-позитронные пары $e^{\pm}$ получаемые в результате распада или аннигиляции ТМ под действием 
 магнитного поля $B$ будут испытывать синхротронное излучение. Для полей $B\sim \mu G$ СИ является
-доминирующим по сравнению с другими явлениями потери энергии - 
+доминирующим по сравнению с другими явлениями потери энергии - обратный эффект Комптона(ICS), brehmssrahlung, ионизация.
 
-Мощность $\mathcal{P}(E,r)$ синхротронного излучения единичного электрона с энергией $E$ в диапозоне частот
+Полная мощность синхротронного излучения в диапазоне частот $(\nu, \nu+d\nu)$ будет равна 
+%TODO: верхний предел интеграла 
+\begin{equation}
+j(\nu, r) = \int_{m_e}^{M_{\rm DM}} dE\mathcal{P}(\nu,r)n_e(r, E)
+\end{equation}
+
+Здесь, мощность $\mathcal{P}(\nu,r)$ синхротронного излучения единичного электрона с энергией $E$ в диапазоне частот
 $(\nu, \nu+d\nu)$ в постоянном магнитном поле $B$ может быть определена следующим образом\cite{GammaRayTests,DecayingDM} :
 \begin{equation}\label{eq:PowerOnFreq}
-\mathcal{P}(E,r) = \frac{dW}{dE} = \frac{1}{4{\pi}}\frac{e^3 B}{m_e}F(\nu/\nu_c)
+\mathcal{P}(\nu,r) = \frac{dW}{d\nu} = \frac{1}{4{\pi}}\frac{e^3 B}{m_e}F(\nu/\nu_c)
 %\frac{2e^3B}{9m_e}\int \frac{d\mathcal{N}}{dE} \delta(f(E))
 \end{equation}
 где $F(x)$ \footnote{Функцию $F(x)$ можно аппроксимировать следующим выражением :
@@ -111,13 +122,23 @@ F(x) = x\int_{x}^{\infty}dxK_{5/3}(x)
 \nu_s(E) = \frac{3eB}{4{\pi}m_e^3}E^2
 \end{equation}
 % --------------------------------------------------------------------------------------------
+\section{Inverse Compton Scattering}
+В зависимости от наблюдаемой галактики, в ряде случаев обратный эффект 
+Комптона(Inverse Compton) может стать основной причиной потерь энергии 
+электронов на излучение.
+Полная мощность IC в диапозоне частот $(\nu, \nu+d\nu)$ будет равна :
+\begin{equation}
+j(\epsilon_1, r) = \int_{m_e}^{M_{\rm DM}} dE\mathcal{P}(\epsilon_1,E,r)n_e(r, E)
+\end{equation}
+Здесь $\mathcal{P}(\epsilon_1,E,r)$ - дифференциальная мощность испущенная фотонами энергии $\epsilon_1$ электроном энергии $E$,  $n_e(r, E)$ - плотность распределения таких электронов. 
+% --------------------------------------------------------------------------------------------
 \section{Модель темной материи}
 На сегодняшний день для объяснения результатов ATIC с помощью темной материи предложено несколько сценариев. В
 работе рассматриваются аннигиляционный и распадный сценарии. Для каждого из сценариев плотность
 числа образующихся электрон-позитронных пар в конкретной области пространства галактики различна.
 
-Поскольку речь идет о "`холодной"' темной материи, которая не движется с релятивистскими скоростями,
-то её можно характеризовать некоторой плотностью энергии, соответствующей плотности числа частиц, т.к.
+В работе рассматривается модель нерелятивистской "`холодной"' темной материи, поэтому, её можно 
+охарактеризовать некоторой плотностью энергии, соответствующей плотности числа частиц, т.к.
 каждая частица привносит энергию, равную своей массе.
 
 Будем предпологать, что распределение электронов от темной материи равновесное по всей Галактике, то есть
@@ -125,22 +146,20 @@ F(x) = x\int_{x}^{\infty}dxK_{5/3}(x)
 изотропии наблюдаемого потока. Также, предположим, что в районе Солнечной cистемы нет локального избытка
 темной материи.
 
-Пусть плотность темной материи на расстоянии $r$ от центра Галактики $n_{DM}(r)$.
+Пусть плотность темной материи на расстоянии $r$ от центра Галактики $\rho_{DM}(r)$.
 
-\subsection{Распад темной материи}
 Для распадного сценария число вторичных электронов пропорционально числу исходных частиц
 темной материи:
 \begin{equation}\label{eq:DecayScenarioF1}
-\left( \frac{dN(E)}{dE}\right)_d(r) = c_1(E)\cdot n_{DM}(r)
+\left( \frac{dN(E)}{dE}\right)_d(r) = c_1(E)\cdot \rho_{DM}(r)
 \end{equation}
-где $c_1(E)$ - вероятность распада. \\\
+где $c_1(E)$ - вероятность распада. 
 
-\subsection{Аннигиляция темной материи}
 В случае аннигиляции темной материи число вторичных электронов пропорционально вероятности
 двум частицам ТМ встретиться, которая в свою очередь пропорциональна квадрату плотности числа
 частиц темной материи :
 \begin{equation}\label{eq:DecayScenarioF2}
-\left( \frac{dN(E)}{dE}\right)_a(r)  = c_2(E) n_{DM}(r)^2
+\left( \frac{dN(E)}{dE}\right)_a(r)  = c_2(E) \rho_{DM}(r)^2
 \end{equation}
 где $c_2(E)$ - вероятность аннигиляции частиц, при условии, что они встретились. \\\
 
@@ -149,11 +168,11 @@ F(x) = x\int_{x}^{\infty}dxK_{5/3}(x)
 \cite{Boyarsky},  в этой работе рассматривается NFW(Navarro, Frenk and White) профиль \cite{NFW}
 
 \begin{equation}\label{eq:NFWF}
-n_{NFW}(r) = \frac{{\rho}_s}{\frac{r}{r_s}(1+\frac{r}{r_s})^2}
+\rho_{NFW}(r) = \frac{{\rho}_s}{\frac{r}{r_s}(1+\frac{r}{r_s})^2}
 \end{equation}
 Он также может быть представлен в виде :
 \begin{equation}\label{eq:NFW2_F}
-n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})^2}
+\rho_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})^2}
 \end{equation}
 
 \section{Определение плотности электронов вблизи Земли}
@@ -168,14 +187,14 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 
 Чтобы определить вероятность темной материи проаннигилировать или распасться, нужно
 найти плотность наблюдаемых электронов $({\frac{dN(E)}{dE}})_0(r)$ вблизи Земли. В
-дополнении к журналу Nature ~\cite{ATICcolEx} был опубликован график зависимости потока
+дополнении к журналу Nature \cite{ATICcol} был опубликован график зависимости потока
 электронов от их энергии.
 
-На графике (~\ref{img:ATICResults}) штриховой кривой соответствует ожидаемый фон, а сплошной
+На графике (\ref{img:ATICResults}) штриховой кривой соответствует ожидаемый фон, а сплошной
 кривой наблюдаемый поток электронов.Но больший интерес представляет разность этих двух кривых -
 пунктирная линия, из которой можно извлечь информацию для наблюдаемого избытка электрон-позитронных пар.
 
-Зная полный поток электронов F(E), который можно извлечь из графика, можно получить формулу
+Зная полный поток электронов $F(E)$, который можно извлечь из графика, можно получить формулу
 для плотности электронов $({\frac{dN(E)}{dE}})_0(r)$ вблизи Земли :
 \begin{equation}\label{eq:ElectronDensity}
 {\frac{dF(E)}{dE}}  = \frac{c}{4\pi}\frac{dN}{dE}
@@ -185,11 +204,11 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 
 Полное число электронов в Галактике для распадов будет равно
 \begin{equation}\label{eq:FullElectronQuantDec}
-{\frac{d\mathcal{N}(E)}{dE}}  = c_1(E)\int{n_{DM}(r)dV}
+n_e(r, E)  = c_1(E)\int{\rho_{DM}(r)dV}
 \end{equation}
 и для аннигиляции :
 \begin{equation}\label{eq:FullElectronQuantAnn}
-{\frac{d\mathcal{N}(E)}{dE}}  = c_2(E)\int{n_{DM}^2(r)dV}
+n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 \end{equation}
 % --------------------------------------------------------------------------------------------
 \newpage
@@ -198,7 +217,7 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 В работе исследуются излучения для двух моделей галактик. Первая - галактика Анромеды, или Messier 31.
 Вторая исследуемая галактика - карликовая эллиптическая галактика Стрельца - Sagittarius Dwarf (SagDEG).
 
-Используя экспериментальные данные проекта ATIC (~\ref{img:ATICResults}) можно получить полный наблюдаемый
+Используя данные эксперимента ATIC (\ref{img:ATICResults}) можно получить полный наблюдаемый
 поток излучения для некоторых энергий и, следовательно, узнать плотность электронов $dN/dE$ вблизи Земли  :
 
 \begin{table}[!ht]
@@ -208,7 +227,7 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 			\begin{tabular}{llll}
 			\hline
 			 $E$         & $E^3dF/dE$ & $dF/dE$ & $dN/dE|_{\odot}$\\
-			 $[GeV]$     & $[GeV^2/(m^2{\cdot}s{\cdot}sr)]$ & $[1/(GeV{\cdot}m^2{\cdot}s{\cdot}sr)]$ & $[1/(GeV{\cdot}m^3)]$ \\
+			 $[GeV]$     & $[GeV^2/(m^2{\cdot}s{\cdot}str)]$ & $[1/(GeV{\cdot}m^2{\cdot}s{\cdot}str)]$ & $[1/(GeV{\cdot}m^3)]$ \\
 			\hline
 			 $45$        & $10$     & $1.1{\cdot}10^{-4}$ & $4.6{\cdot}10^{-12}$ \\
 			 $100$       & $29$     & $2.9{\cdot}10^{-5}$ & $1.2{\cdot}10^{-12}$ \\
@@ -220,11 +239,13 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 \end{table}
 
 По формуле (\ref{eq:NuSynch}) можно найти частоту синхротронного излучения для каждой 
-из моделей (\ref{SagDegModel}) (\ref{M31Model}) галактик , а из 
+из моделей наблюдаемых
+ %%(\ref{SagDegModel}) (\ref{M31Model})
+галактик , а из 
 (\ref{eq:DecayScenarioF1}) и (\ref{eq:DecayScenarioF2}) 
 вероятности темной материи проаннигилировать или распасться для конкретной энергии. Результаты
 вычислений приведены в таблице (\ref{ConstantsData}).
-\begin{table}[t]
+\begin{table}[!ht]
   \caption{Результаты эксперимента ATIC}
 	\label{ConstantsData}
 		\begin{center}
@@ -241,65 +262,85 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 			\end{tabular}
 		\end{center}
 \end{table}
-\newpage
 % --------------------------------------------------------------------------------------------
 
-\section{Модель галактики M31}
 \label{M31Model}
+\label{SagDegModel}
 
-\subsection{Первоначальные данные}
-В таблице \ref{M31ModelData} приведены данные о галактике Messier 31. 
-\begin{table}[h]
-	\caption{Данные о галактике Messier 31}
-	\label{M31ModelData}
+В таблице \ref{ModelData} приведены данные о галактике Messier 31 и о карликовой галактике Стрельца(Sagittarius Dwarf). 
+
+\begin{table}[!ht]
+\footnotesize
+	\caption{Данные о наблюдаемых объектах}
+	\label{ModelData}
 		\begin{center}
-			\begin{tabular}{lll}
+			\begin{tabular}{llll}
 			\hline
-			Величина&Значение&\\
+			Величина& M31 & SagDeg &\\
 			\hline
-			 $D$       & $770  kpc$           & расстояние до галактики\\
-			 $r_s$     & $8  kpc$             & характерный радиус\\
-			 $\rho_s$  & $1.9  GeV/cm^3$      & плотность ТМ\\
-			 $M_{vir}$ & $7\cdot10^{11}  M_{\odot}$ & Масса ТМ\\
-			 $C$       & $22$                & характеристический параметр\\
-			 $B$       & $4 {\mu}G$          & Магнитное поле\\
+			 $D$       & $770  kpc$           & $24kpc$ & distance to object\\
+			 $r_s$     & $8  kpc$             & $0.62 kpc$ & radius\\
+			 $\rho_s$  & $1.9  GeV/cm^3$      & $5.2 Gev/cm^3$ & DM density(NFW)\\
+			 $M_{vir}$ & $7\cdot10^{11}  M_{\odot}$ & $\cdot10^{8}  M_{\odot}$ & Масса ТМ\\
+			 $C$       & $22$                & $-$ & характеристический параметр\\
+			 $B$       & $4 {\mu}G$          & $1 {\mu}G$ & Магнитное поле\\
 			\hline
 			\end{tabular}
 		\end{center}
 \end{table}
 
 \subsection{Сценарий распада}
-В таблице \ref{M31DecayResults} приведены рещультаты вычислений интенсивности для сценария распада
-частиц темной материи. 
-\begin{table}[h]
-  \caption{Результаты для сценария распада}
-	\label{M31DecayResults}
-		\begin{center}
-			\begin{tabular}{lllll}
-			\hline
-			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
-			\hline
-			 $45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
-			 $100$       & $2.2{\cdot}10^{11}$ & $3.1{\cdot}10^{51}$ & $1.8{\cdot}10^{-5}$ \\
-			 $320$       & $2.2{\cdot}10^{12}$ & $2.8{\cdot}10^{50}$ & $1.7{\cdot}10^{-6}$ \\
-			 $600$       & $7.8{\cdot}10^{12}$ & $7.6{\cdot}10^{49}$ & $4.5{\cdot}10^{-7}$ \\
-			\hline
-			\end{tabular}
-		\end{center}
-\end{table}
-
-\newpage
-
-\subsection{Сценарий аннигиляции}
-В таблице \ref{M31AnnihilResults} приведены рещультаты вычислений интенсивности для сценария аннигиляции
+%В таблице \ref{M31DecayResults} приведены результаты вычислений интенсивности для сценария распада
+%частиц темной материи. 
+В таблице \ref{DecayResults} приведены результаты вычислений интенсивности для сценария распада
 частиц темной материи.
 
-\begin{table}[h]
-  \caption{Результаты для сценария распада}
-	\label{M31AnnihilResults}
-		\begin{center}
-			\begin{tabular}{lllll}
+\begin{table}[!ht]
+\footnotesize
+\begin{minipage}[b]{0.5\linewidth}\centering
+\begin{tabular}{lllll}
+	\hline
+	 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+	 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
+	\hline
+	 $45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
+	 $100$       & $2.2{\cdot}10^{11}$ & $3.1{\cdot}10^{51}$ & $1.8{\cdot}10^{-5}$ \\
+	 $320$       & $2.2{\cdot}10^{12}$ & $2.8{\cdot}10^{50}$ & $1.7{\cdot}10^{-6}$ \\
+	 $600$       & $7.8{\cdot}10^{12}$ & $7.6{\cdot}10^{49}$ & $4.5{\cdot}10^{-7}$ \\
+	\hline
+\end{tabular}
+\\M31
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\begin{tabular}{lllll}
+	\hline
+	 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+	 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
+	\hline
+	 $45$        & $1.1{\cdot}10^{10}$ & $1.7{\cdot}10^{48}$ & $1.0{\cdot}10^{-5}$ \\
+	 $100$       & $5.4{\cdot}10^{10}$ & $4.4{\cdot}10^{47}$ & $2.7{\cdot}10^{-6}$ \\
+	 $320$       & $5.5{\cdot}10^{11}$ & $4.0{\cdot}10^{46}$ & $2.4{\cdot}10^{-7}$ \\
+	 $600$       & $1.9{\cdot}10^{12}$ & $1.1{\cdot}10^{46}$ & $6.7{\cdot}10^{-8}$ \\
+	\hline
+\end{tabular}
+\\SagDeg
+\end{minipage}
+\caption{Результаты для сценария распада}
+\label{DecayResults}
+\end{table}
+
+
+
+\subsection{Сценарий аннигиляции}
+В таблице \ref{AnnihilResults} приведены результаты вычислений интенсивности для сценария аннигиляции
+частиц темной материи.
+
+\begin{table}[!ht]
+\footnotesize
+\begin{minipage}[b]{0.5\linewidth}\centering
+\begin{tabular}{lllll}
 			\hline
 			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
 			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
@@ -309,62 +350,13 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 			 $320$       & $2.2{\cdot}10^{12}$ & $2.7{\cdot}10^{50}$ & $1.6{\cdot}10^{-6}$ \\
 			 $600$       & $7.8{\cdot}10^{12}$ & $7.4{\cdot}10^{49}$ & $4.4{\cdot}10^{-7}$ \\
 			\hline
-			\end{tabular}
-		\end{center}
-\end{table}
-% --------------------------------------------------------------------------------------------
-
-\section{Модель галактики SagDeg}
-\label{SagDegModel}
-\subsection{Первоначальные данные}
-
-\begin{table}[h]
-	\caption{Данные о галактике Sagittarius Dwarf}
-	\label{SagDegModelData}
-		\begin{center}
-			\begin{tabular}{lll}
-			\hline
-			Величина&Значение&\\
-			\hline
-			 $D$       & $24  kpc$           & расстояние до галактики\\
-			 $r_s$     & $0.62  kpc$         & характерный радиус\\
-			 $\rho_s$  & $5.2  GeV/cm^3$     & плотность ТМ\\
-			 $M_{vir}$ & $10^{8}  M_{\odot}$ & Масса ТМ\\
-			 $B$       & $1 {\mu}G$          & Магнитное поле\\
-			\hline
-			\end{tabular}
-		\end{center}
-\end{table}
-
-\subsection{Сценарий распада}
-В таблице \ref{SagDegDecayResults} приведены рещультаты вычислений интенсивности для сценария распада
-частиц темной материи.
-\begin{table}[h]
-  \caption{Результаты для сценария распада}
-	\label{SagDegDecayResults}
-		\begin{center}
-			\begin{tabular}{lllll}
-			\hline
-			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
-			\hline
-			 $45$        & $1.1{\cdot}10^{10}$ & $1.7{\cdot}10^{48}$ & $1.0{\cdot}10^{-5}$ \\
-			 $100$       & $5.4{\cdot}10^{10}$ & $4.4{\cdot}10^{47}$ & $2.7{\cdot}10^{-6}$ \\
-			 $320$       & $5.5{\cdot}10^{11}$ & $4.0{\cdot}10^{46}$ & $2.4{\cdot}10^{-7}$ \\
-			 $600$       & $1.9{\cdot}10^{12}$ & $1.1{\cdot}10^{46}$ & $6.7{\cdot}10^{-8}$ \\
-			\hline
-			\end{tabular}
-		\end{center}
-\end{table}
-
-\subsection{Сценарий аннигиляции}
-В таблице \ref{SagDegAnnihilResults} приведены рещультаты вычислений интенсивности для сценария аннигиляции
-частиц темной материи.
-\begin{table}[h]
-  \caption{Результаты для сценария распада}
-	\label{SagDegAnnihilResults}
-		\begin{center}
-			\begin{tabular}{lllll}
+\end{tabular}
+\\M31
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\begin{tabular}{lllll}
 			\hline
 			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
 			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
@@ -374,10 +366,12 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 			 $320$       & $5.5{\cdot}10^{11}$ & $9.4{\cdot}10^{47}$ & $9.4{\cdot}10^{-6}$ \\
 			 $600$       & $1.9{\cdot}10^{12}$ & $2.6{\cdot}10^{47}$ & $1.6{\cdot}10^{-6}$ \\
 			\hline
-			\end{tabular}
-		\end{center}
+\end{tabular}
+\\SagDeg
+\end{minipage}
+\caption{Результаты для сценария аннигиляции}
+\label{AnnihilResults}
 \end{table}
-
 
 
 
@@ -401,7 +395,15 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 
 
 % --------------------------------------------------------------------------------------------
-\begin{thebibliography}{100}
+\appendix
+
+
+
+
+\begin{multicols}{2}
+  \begin{thebibliography}{nn}
+\scriptsize
+% \begin{thebibliography}{100}
 
 \bibitem{ATICcol} ATIC collaboration, Nature 456 (2008) | doi:10.1038/nature07477
 \bibitem{PAMELA} PAMELA collaboration, arXiv:0810.4994[astro-ph].    
@@ -425,6 +427,8 @@ n_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})
 % Inverse Compton constraints on the Dark Matter e+e- excesses
 
 \end{thebibliography}
+\end{multicols}
+
 % --------------------------------------------------------------------------------------------
 % \tableofcontents
 \end{document}
