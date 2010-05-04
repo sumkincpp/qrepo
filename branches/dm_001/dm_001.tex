@@ -83,14 +83,31 @@
 энергиях порядка от 45 до 600 ГэВ, которые можно интерпретировать как результат аннигиляции или 
 распада темной материи в галактическом гало Млечного пути.
 
-В этой работе исследуется синхротронное излучение !аких избыточных электронов и позитронов от галактики
+В этой работе исследуется синхротронное излучение таких избыточных электронов и позитронов от галактики
 Messier 31 и от некоторых карликовых спутников Млечного Пути, ожидаемое при такой интерпретации.
 
 % --------------------------------------------------------------------------------------------
-\section{Синхротронное излучение}
+\section{Потери энергии электронами}
 
 Электрон-позитронные пары $e^{\pm}$ получаемые в результате распада или аннигиляции ТМ под действием 
-магнитного поля $B$ будут испытывать синхротронное излучение. Для полей $B\sim \mu G$ СИ является
+магнитного поля $B$ будут испытывать синхротронное излучение. Как для электронов, так и для позитронов
+в результате процесса аннигиляции или распада ТМ ожидаемый спектр будет тем же самым, поэтому можно рассматривать только спектр электронов. 
+
+При возникновении электрона, его траектория закручивается в так называемой "`диффузионной зоне"', при этом  важен вклад магнитного поля.  В общем случае случае распространение электронов описывается следующим дифференциальным уравнением \cite{reviewCR}:
+
+\begin{equation}
+\underbrace{
+-\frac{1}{r^2}\frac{\partial}{\partial r} \left[ r^2 D \frac{\partial f}{\partial r} \right]}_{\rm diffusion}
++ \underbrace{v \frac{\partial f}{\partial r}}_{\rm advection} 
+- \underbrace{\frac{1}{3r^2}\frac{\partial}{\partial r}(r^2 v)p \frac{\partial f}{\partial p}}_{\rm convection} 
++ \underbrace{\frac{1}{p^2} \frac{\partial }{\partial p}\left[\dot p p^2 f\right]}_{\rm radiative\ losses}
+= \underbrace{\frac{Q_e(E,r)}{4 \pi p^2}}_{\rm source},
+\label{eq:diffusioneq}
+\end{equation}
+
+
+\subsection{Синхротронное излучение}
+Для рассматриваемых полей $B\sim \mu G$ СИ является
 доминирующим по сравнению с другими явлениями потери энергии - обратный эффект Комптона(ICS), brehmssrahlung, ионизация.
 
 Полная мощность синхротронного излучения в диапазоне частот $(\nu, \nu+d\nu)$ будет равна 
@@ -111,7 +128,7 @@ F(x) = \frac{8\pi}{9 \sqrt{3}}\delta(x - 0.29)
 \end{equation}
 В этом приближении получаем :
 \begin{equation}\label{eq:PowerOnFreq2}
-\mathcal{P}(E,r) = \frac{2e^3B}{9m_e}\int \frac{d\mathcal{N}}{dE} \delta(f(E))
+j(\nu,r) = \frac{2e^3B}{9m_e}\int dE n_e(r, E) \delta(f(E))
 \end{equation}
 } имеет вид :
 \begin{equation}\label{eq:FBessel}
@@ -121,8 +138,13 @@ F(x) = x\int_{x}^{\infty}dxK_{5/3}(x)
 \begin{equation}\label{eq:NuSynch}
 \nu_s(E) = \frac{3eB}{4{\pi}m_e^3}E^2
 \end{equation}
+Наблюдаемый на земле поток электронов равен :
+\begin{equation}
+S = \frac{1}{4\pi D^2} j(\nu,r)
+\label{eq:EarthFlux}
+\end{equation}
 % --------------------------------------------------------------------------------------------
-\section{Inverse Compton Scattering}
+\subsection{Inverse Compton Scattering}
 В зависимости от наблюдаемой галактики, в ряде случаев обратный эффект 
 Комптона(Inverse Compton) может стать основной причиной потерь энергии 
 электронов на излучение.
@@ -133,15 +155,14 @@ j(\epsilon_1, r) = \int_{m_e}^{M_{\rm DM}} dE\mathcal{P}(\epsilon_1,E,r)n_e(r, E
 Здесь $\mathcal{P}(\epsilon_1,E,r)$ - дифференциальная мощность испущенная фотонами энергии $\epsilon_1$ электроном энергии $E$,  $n_e(r, E)$ - плотность распределения таких электронов. 
 % --------------------------------------------------------------------------------------------
 \section{Модель темной материи}
-На сегодняшний день для объяснения результатов ATIC с помощью темной материи предложено несколько сценариев. В
-работе рассматриваются аннигиляционный и распадный сценарии. Для каждого из сценариев плотность
+На сегодняшний день для объяснения результатов ATIC с помощью темной материи предложено несколько сценариев. В работе рассматриваются аннигиляционный и распадный сценарии. Для каждого из сценариев плотность
 числа образующихся электрон-позитронных пар в конкретной области пространства галактики различна.
 
 В работе рассматривается модель нерелятивистской "`холодной"' темной материи, поэтому, её можно 
 охарактеризовать некоторой плотностью энергии, соответствующей плотности числа частиц, т.к.
 каждая частица привносит энергию, равную своей массе.
 
-Будем предпологать, что распределение электронов от темной материи равновесное по всей Галактике, то есть
+Будем предпологать, что распределение вторичных электронов от темной материи равновесное по всей Галактике, то есть 
 отсутствют потоки наблюдаемых электронов. Косвенно это подтверждается предварительной информацией об
 изотропии наблюдаемого потока. Также, предположим, что в районе Солнечной cистемы нет локального избытка
 темной материи.
@@ -162,15 +183,14 @@ j(\epsilon_1, r) = \int_{m_e}^{M_{\rm DM}} dE\mathcal{P}(\epsilon_1,E,r)n_e(r, E
 \left( \frac{dN(E)}{dE}\right)_a(r)  = c_2(E) \rho_{DM}(r)^2
 \end{equation}
 где $c_2(E)$ - вероятность аннигиляции частиц, при условии, что они встретились. \\\
-
-\subsection{Модель распределения темной материи}
+% \subsection{Модель распределения темной материи}
 Существует много разнообразных профилей для распределения плотности энергии темной материи в галактике
 \cite{Boyarsky},  в этой работе рассматривается NFW(Navarro, Frenk and White) профиль \cite{NFW}
 
 \begin{equation}\label{eq:NFWF}
 \rho_{NFW}(r) = \frac{{\rho}_s}{\frac{r}{r_s}(1+\frac{r}{r_s})^2}
 \end{equation}
-Он также может быть представлен в виде :
+Он также может быть представлен в виде(C - характеристический параметр) :
 \begin{equation}\label{eq:NFW2_F}
 \rho_{NFW}(r) = \frac{1}{4{\pi}[log(1+C)-C/(1+C)]}\frac{M_{vir}}{r(1+\frac{r}{r_s})^2}
 \end{equation}
@@ -211,7 +231,6 @@ n_e(r, E)  = c_1(E)\int{\rho_{DM}(r)dV}
 n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 \end{equation}
 % --------------------------------------------------------------------------------------------
-\newpage
 \section{Экспериментальные данные}
 
 В работе исследуются излучения для двух моделей галактик. Первая - галактика Анромеды, или Messier 31.
@@ -246,21 +265,21 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 вероятности темной материи проаннигилировать или распасться для конкретной энергии. Результаты
 вычислений приведены в таблице (\ref{ConstantsData}).
 \begin{table}[!ht]
-  \caption{Результаты эксперимента ATIC}
-	\label{ConstantsData}
-		\begin{center}
-			\begin{tabular}{lllll}
-			\hline
-			 $E$         & $C_1(E)$ & $C_2(E)$ & $ \frac{{\nu}_s(E)}{3}, M31 $ & $ \frac{{\nu}_s(E)}{3}, SagDEG$ \\
-			 $[GeV]$     & $[1/GeV^2]$ & $[m^3/GeV^3]$ & $[Hz]$ & $[Hz]$ \\
-			\hline
-			 $45$        & $1.5{\cdot}10^{-17}$ & $5.1{\cdot}10^{-23}$ & $4.4{\cdot}10^{10}$ & $1.1{\cdot}10^{10}$ \\
-			 $100$       & $4.0{\cdot}10^{-18}$ & $1.3{\cdot}10^{-23}$ & $2.2{\cdot}10^{11}$ & $5.4{\cdot}10^{10}$ \\
-			 $320$       & $3.6{\cdot}10^{-19}$ & $1.2{\cdot}10^{-24}$ & $2.2{\cdot}10^{12}$ & $5.5{\cdot}10^{11}$ \\
-			 $600$       & $9.9{\cdot}10^{-20}$ & $3.3{\cdot}10^{-25}$ & $7.8{\cdot}10^{12}$ & $1.9{\cdot}10^{12}$ \\
-			\hline
-			\end{tabular}
-		\end{center}
+\caption{Результаты эксперимента ATIC}
+\label{ConstantsData}
+\begin{center}
+	\begin{tabular}{lllll}
+	\hline
+	 $E$         & $C_1(E)$ & $C_2(E)$ & $ \frac{{\nu}_s(E)}{3}, M31 $ & $ \frac{{\nu}_s(E)}{3}, SagDEG$ \\
+	 $[GeV]$     & $[1/GeV^2]$ & $[m^3/GeV^3]$ & $[Hz]$ & $[Hz]$ \\
+	\hline
+	 $45$        & $1.5{\cdot}10^{-17}$ & $5.1{\cdot}10^{-23}$ & $4.4{\cdot}10^{10}$ & $1.1{\cdot}10^{10}$ \\
+	 $100$       & $4.0{\cdot}10^{-18}$ & $1.3{\cdot}10^{-23}$ & $2.2{\cdot}10^{11}$ & $5.4{\cdot}10^{10}$ \\
+	 $320$       & $3.6{\cdot}10^{-19}$ & $1.2{\cdot}10^{-24}$ & $2.2{\cdot}10^{12}$ & $5.5{\cdot}10^{11}$ \\
+	 $600$       & $9.9{\cdot}10^{-20}$ & $3.3{\cdot}10^{-25}$ & $7.8{\cdot}10^{12}$ & $1.9{\cdot}10^{12}$ \\
+	\hline
+	\end{tabular}
+\end{center}
 \end{table}
 % --------------------------------------------------------------------------------------------
 
@@ -271,22 +290,22 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 
 \begin{table}[!ht]
 \footnotesize
-	\caption{Данные о наблюдаемых объектах}
-	\label{ModelData}
-		\begin{center}
-			\begin{tabular}{llll}
-			\hline
-			Величина& M31 & SagDeg &\\
-			\hline
-			 $D$       & $770  kpc$           & $24kpc$ & distance to object\\
-			 $r_s$     & $8  kpc$             & $0.62 kpc$ & radius\\
-			 $\rho_s$  & $1.9  GeV/cm^3$      & $5.2 Gev/cm^3$ & DM density(NFW)\\
-			 $M_{vir}$ & $7\cdot10^{11}  M_{\odot}$ & $\cdot10^{8}  M_{\odot}$ & Масса ТМ\\
-			 $C$       & $22$                & $-$ & характеристический параметр\\
-			 $B$       & $4 {\mu}G$          & $1 {\mu}G$ & Магнитное поле\\
-			\hline
-			\end{tabular}
-		\end{center}
+\caption{Данные о наблюдаемых объектах}
+\label{ModelData}
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Величина& M31 & SagDeg &\\
+\hline
+$D$       & $770  kpc$           & $24kpc$ & distance to object\\
+$r_s$     & $8  kpc$             & $0.62 kpc$ & radius\\
+$\rho_s$  & $1.9  GeV/cm^3$      & $5.2 Gev/cm^3$ & DM density(NFW)\\
+$M_{vir}$ & $7\cdot10^{11}  M_{\odot}$ & $\cdot10^{8}  M_{\odot}$ & Масса ТМ\\
+$C$       & $22$                & $-$ & характеристический параметр\\
+$B$       & $4 {\mu}G$          & $1 {\mu}G$ & Магнитное поле\\
+\hline
+\end{tabular}
+\end{center}
 \end{table}
 
 \subsection{Сценарий распада}
@@ -299,15 +318,15 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 \footnotesize
 \begin{minipage}[b]{0.5\linewidth}\centering
 \begin{tabular}{lllll}
-	\hline
-	 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-	 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
-	\hline
-	 $45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
-	 $100$       & $2.2{\cdot}10^{11}$ & $3.1{\cdot}10^{51}$ & $1.8{\cdot}10^{-5}$ \\
-	 $320$       & $2.2{\cdot}10^{12}$ & $2.8{\cdot}10^{50}$ & $1.7{\cdot}10^{-6}$ \\
-	 $600$       & $7.8{\cdot}10^{12}$ & $7.6{\cdot}10^{49}$ & $4.5{\cdot}10^{-7}$ \\
-	\hline
+\hline
+$E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+$[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
+\hline
+$45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
+$100$       & $2.2{\cdot}10^{11}$ & $3.1{\cdot}10^{51}$ & $1.8{\cdot}10^{-5}$ \\
+$320$       & $2.2{\cdot}10^{12}$ & $2.8{\cdot}10^{50}$ & $1.7{\cdot}10^{-6}$ \\
+$600$       & $7.8{\cdot}10^{12}$ & $7.6{\cdot}10^{49}$ & $4.5{\cdot}10^{-7}$ \\
+\hline
 \end{tabular}
 \\M31
 \end{minipage}
@@ -315,15 +334,15 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \begin{tabular}{lllll}
-	\hline
-	 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-	 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
-	\hline
-	 $45$        & $1.1{\cdot}10^{10}$ & $1.7{\cdot}10^{48}$ & $1.0{\cdot}10^{-5}$ \\
-	 $100$       & $5.4{\cdot}10^{10}$ & $4.4{\cdot}10^{47}$ & $2.7{\cdot}10^{-6}$ \\
-	 $320$       & $5.5{\cdot}10^{11}$ & $4.0{\cdot}10^{46}$ & $2.4{\cdot}10^{-7}$ \\
-	 $600$       & $1.9{\cdot}10^{12}$ & $1.1{\cdot}10^{46}$ & $6.7{\cdot}10^{-8}$ \\
-	\hline
+\hline
+$E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+$[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
+\hline
+$45$        & $1.1{\cdot}10^{10}$ & $1.7{\cdot}10^{48}$ & $1.0{\cdot}10^{-5}$ \\
+$100$       & $5.4{\cdot}10^{10}$ & $4.4{\cdot}10^{47}$ & $2.7{\cdot}10^{-6}$ \\
+$320$       & $5.5{\cdot}10^{11}$ & $4.0{\cdot}10^{46}$ & $2.4{\cdot}10^{-7}$ \\
+$600$       & $1.9{\cdot}10^{12}$ & $1.1{\cdot}10^{46}$ & $6.7{\cdot}10^{-8}$ \\
+\hline
 \end{tabular}
 \\SagDeg
 \end{minipage}
@@ -341,15 +360,15 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 \footnotesize
 \begin{minipage}[b]{0.5\linewidth}\centering
 \begin{tabular}{lllll}
-			\hline
-			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
-			\hline
-			 $45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
-			 $100$       & $2.2{\cdot}10^{11}$ & $2.9{\cdot}10^{51}$ & $1.7{\cdot}10^{-5}$ \\
-			 $320$       & $2.2{\cdot}10^{12}$ & $2.7{\cdot}10^{50}$ & $1.6{\cdot}10^{-6}$ \\
-			 $600$       & $7.8{\cdot}10^{12}$ & $7.4{\cdot}10^{49}$ & $4.4{\cdot}10^{-7}$ \\
-			\hline
+\hline
+$E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+$[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
+\hline
+$45$        & $4.4{\cdot}10^{10}$ & $1.2{\cdot}10^{52}$ & $7.1{\cdot}10^{-5}$ \\
+$100$       & $2.2{\cdot}10^{11}$ & $2.9{\cdot}10^{51}$ & $1.7{\cdot}10^{-5}$ \\
+$320$       & $2.2{\cdot}10^{12}$ & $2.7{\cdot}10^{50}$ & $1.6{\cdot}10^{-6}$ \\
+$600$       & $7.8{\cdot}10^{12}$ & $7.4{\cdot}10^{49}$ & $4.4{\cdot}10^{-7}$ \\
+\hline
 \end{tabular}
 \\M31
 \end{minipage}
@@ -357,15 +376,15 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \begin{tabular}{lllll}
-			\hline
-			 $E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
-			 $[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
-			\hline
-			 $45$        & $1.1{\cdot}10^{10}$ & $4.0{\cdot}10^{49}$ & $2.4{\cdot}10^{-4}$ \\
-			 $100$       & $5.4{\cdot}10^{10}$ & $1.0{\cdot}10^{49}$ & $1.0{\cdot}10^{-5}$ \\
-			 $320$       & $5.5{\cdot}10^{11}$ & $9.4{\cdot}10^{47}$ & $9.4{\cdot}10^{-6}$ \\
-			 $600$       & $1.9{\cdot}10^{12}$ & $2.6{\cdot}10^{47}$ & $1.6{\cdot}10^{-6}$ \\
-			\hline
+\hline
+$E$         & ${\nu}$ & $\frac{d\mathcal{N}(E)}{dE}$ & $ \frac{1}{4{\pi}D^2}{\cdot}\frac{d\mathcal{W}(E)}{d\nu} $ \\
+$[GeV]$     & $[Hz]$  & $[1/GeV]$ & $[Jy]$ \\
+\hline
+$45$        & $1.1{\cdot}10^{10}$ & $4.0{\cdot}10^{49}$ & $2.4{\cdot}10^{-4}$ \\
+$100$       & $5.4{\cdot}10^{10}$ & $1.0{\cdot}10^{49}$ & $1.0{\cdot}10^{-5}$ \\
+$320$       & $5.5{\cdot}10^{11}$ & $9.4{\cdot}10^{47}$ & $9.4{\cdot}10^{-6}$ \\
+$600$       & $1.9{\cdot}10^{12}$ & $2.6{\cdot}10^{47}$ & $1.6{\cdot}10^{-6}$ \\
+\hline
 \end{tabular}
 \\SagDeg
 \end{minipage}
@@ -425,6 +444,17 @@ n_e(r, E)  = c_2(E)\int{\rho_{DM}^2(r)dV}
 
 \bibitem{ICconstraints} Marco Cirelli, Paolo Panci,  arXiv:0904.3830[astro-ph].
 % Inverse Compton constraints on the Dark Matter e+e- excesses
+
+\bibitem{Rybicki}
+G.~Rybicki and A.~P.~Lightman, {\it Radiative Processes in Astrophysics}, J.Wiley \& sons, New York, 1979.
+
+\bibitem{reviewCR}
+A.~W.~Strong, I.~V.~Moskalenko and V.~S.~Ptuskin,
+  %``Cosmic-ray propagation and interactions in the Galaxy,''
+  Ann.\ Rev.\ Nucl.\ Part.\ Sci.\  {\bf 57} (2007) 285
+  [arXiv:astro-ph/0701517].
+  %%CITATION = ARNUA,57,285;%%
+
 
 \end{thebibliography}
 \end{multicols}
