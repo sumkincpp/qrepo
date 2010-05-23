@@ -15,114 +15,156 @@ Gtk::Window* do_appwindow()
 
 
 MainWindow::MainWindow()
-: m_Table(1, 4)
-	{
-	  set_title("Application Window");
+{
+  set_title("Application Window");
 
-	  add(m_Table);
+  add(m_Box);
 
+  //Create actions for menus and toolbars:
+  m_refActionGroup = Gtk::ActionGroup::create();
 
-	  //Menu:
-	  {
-		using namespace Gtk::Menu_Helpers;
+  //File|New sub menu:
+  m_refActionGroup->add(Gtk::Action::create("FileNewStandard",
+              Gtk::Stock::NEW, "_New", "Create a new file"),
+          sigc::mem_fun(*this, &MainWindow::on_menu_file_new_generic));
 
-		//File menu:
-		Gtk::Menu* pMenuFile = Gtk::manage( new Gtk::Menu() );
-		MenuList& list_file = pMenuFile->items();
-/*		list_file.push_back( MenuElem("_New", "<control>N", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_file.push_back( MenuElem("_Open", "<control>O", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_file.push_back( MenuElem("_Save", "<control>S", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-*/		list_file.push_back( MenuElem("Save _As", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_file.push_back(SeparatorElem());
-//		list_file.push_back( MenuElem("_Quit", "<control>Q", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
+  m_refActionGroup->add(Gtk::Action::create("FileNewFoo",
+              Gtk::Stock::NEW, "New Foo", "Create a new foo"),
+          sigc::mem_fun(*this, &MainWindow::on_menu_file_new_generic));
 
-		//Preferences menu:
-		Gtk::Menu* pMenuPreferences = Gtk::manage( new Gtk::Menu() );
-		MenuList& list_preferences = pMenuPreferences->items();
+  m_refActionGroup->add(Gtk::Action::create("FileNewGoo",
+              Gtk::Stock::NEW, "_New Goo", "Create a new goo"),
+          sigc::mem_fun(*this, &MainWindow::on_menu_file_new_generic));
 
-		// Create a submenu
-		Gtk::Menu* pMenuSub_Color = Gtk::manage( new Gtk::Menu());
-		MenuList& list_sub = pMenuSub_Color->items();
-		list_sub.push_back( MenuElem("_Red", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_sub.push_back( MenuElem("_Green", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_sub.push_back( MenuElem("_Blue", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
+  //File menu:
+  m_refActionGroup->add(Gtk::Action::create("FileMenu", "File"));
+  //Sub-menu.
+  m_refActionGroup->add(Gtk::Action::create("FileNew", Gtk::Stock::NEW));
+  m_refActionGroup->add(Gtk::Action::create("FileQuit", Gtk::Stock::QUIT),
+          sigc::mem_fun(*this, &MainWindow::on_menu_file_quit));
 
-		list_preferences.push_back( MenuElem("_Color", *pMenuSub_Color) );
-
-		// Create a submenu
-		Gtk::Menu* pMenuSub_Shape = Gtk::manage( new Gtk::Menu());
-		list_sub = pMenuSub_Shape->items();
-		list_sub.push_back( MenuElem("_Square", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_sub.push_back( MenuElem("_Rectangle", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-		list_sub.push_back( MenuElem("_Oval", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
-
-		list_preferences.push_back( MenuElem("_Shape", *pMenuSub_Shape) );
-
-		//Help menu:
-		Gtk::Menu* pMenuHelp = Gtk::manage( new Gtk::Menu() );
-		MenuList& list_help = pMenuHelp->items();
-		list_help.push_back( MenuElem("_About", sigc::mem_fun(*this, &MainWindow::on_menu_item)) );
+  //Edit menu:
+  m_refActionGroup->add(Gtk::Action::create("EditMenu", "Edit"));
+  m_refActionGroup->add(Gtk::Action::create("EditCopy", Gtk::Stock::COPY),
+          sigc::mem_fun(*this, &MainWindow::on_menu_others));
+  m_refActionGroup->add(Gtk::Action::create("EditPaste", Gtk::Stock::PASTE),
+          sigc::mem_fun(*this, &MainWindow::on_menu_others));
+  m_refActionGroup->add(Gtk::Action::create("EditSomething", "Something"),
+          Gtk::AccelKey("<control><alt>S"),
+          sigc::mem_fun(*this, &MainWindow::on_menu_others));
 
 
-		//Create the menu bar
-		MenuList& list_bar = m_Menubar.items();
-		list_bar.push_front(MenuElem("_Help", *pMenuHelp));
-		//list_bar.front()->set_right_justified();
-		list_bar.push_front(MenuElem("_Preferences", *pMenuPreferences));
-		list_bar.push_front(MenuElem("_File", *pMenuFile));
+  //Choices menu, to demonstrate Radio items
+  m_refActionGroup->add( Gtk::Action::create("ChoicesMenu", "Choices") );
+  Gtk::RadioAction::Group group_userlevel;
+  m_refChoiceOne = Gtk::RadioAction::create(group_userlevel, "ChoiceOne", "One");
+  m_refActionGroup->add(m_refChoiceOne,
+          sigc::mem_fun(*this, &MainWindow::on_menu_choices_one) );
+  m_refChoiceTwo = Gtk::RadioAction::create(group_userlevel, "ChoiceTwo", "Two");
+  m_refActionGroup->add(m_refChoiceTwo,
+          sigc::mem_fun(*this, &MainWindow::on_menu_choices_two) );
 
-		//Add the menu bar to the Table:
-		m_Table.attach(m_Menubar,
-						// X direction             Y direction
-						0, 1,                      0, 1,
-						Gtk::FILL|Gtk::EXPAND, Gtk::AttachOptions(0)
-						);
-	  } //menu
+  //Help menu:
+  m_refActionGroup->add( Gtk::Action::create("HelpMenu", "Help") );
+  m_refActionGroup->add( Gtk::Action::create("HelpAbout", Gtk::Stock::HELP),
+          sigc::mem_fun(*this, &MainWindow::on_menu_others) );
+
+  m_refUIManager = Gtk::UIManager::create();
+  m_refUIManager->insert_action_group(m_refActionGroup);
+
+  add_accel_group(m_refUIManager->get_accel_group());
+
+  //Layout the actions in a menubar and toolbar:
+  Glib::ustring ui_info =
+        "<ui>"
+        "  <menubar name='MenuBar'>"
+        "    <menu action='FileMenu'>"
+/*        "      <menu action='FileNew'>"
+        "        <menuitem action='FileNewStandard'/>"
+        "        <menuitem action='FileNewFoo'/>"
+        "        <menuitem action='FileNewGoo'/>"
+        "      </menu>"
+        "      <separator/>"*/
+        "      <menuitem action='FileQuit'/>"
+        "    </menu>"
+/*        "    <menu action='EditMenu'>"
+        "      <menuitem action='EditCopy'/>"
+        "      <menuitem action='EditPaste'/>"
+        "      <menuitem action='EditSomething'/>"
+        "    </menu>" */
+/*        "    <menu action='ChoicesMenu'>"
+        "      <menuitem action='ChoiceOne'/>"
+        "      <menuitem action='ChoiceTwo'/>"
+        "    </menu>"*/
+        "    <menu action='HelpMenu'>"
+        "      <menuitem action='HelpAbout'/>"
+        "    </menu>"
+        "  </menubar>"
+        "  <toolbar  name='ToolBar'>"
+        "    <toolitem action='FileNewStandard'/>"
+        "    <toolitem action='FileQuit'/>"
+        "  </toolbar>"
+        "</ui>";
+
+  #ifdef GLIBMM_EXCEPTIONS_ENABLED
+  try
+  {
+    m_refUIManager->add_ui_from_string(ui_info);
+  }
+  catch(const Glib::Error& ex)
+  {
+   // std::cerr << "building menus failed: " <<  ex.what();
+  }
+  #else
+  std::auto_ptr<Glib::Error> ex;
+  m_refUIManager->add_ui_from_string(ui_info, ex);
+  if(ex.get())
+  {
+//    std::cerr << "building menus failed: " <<  ex->what();
+  }
+  #endif //GLIBMM_EXCEPTIONS_ENABLED
+
+  //Get the menubar and toolbar widgets, and add them to a container widget:
+  Gtk::Widget* pMenubar = m_refUIManager->get_widget("/MenuBar");
+  if(pMenubar)
+	  m_Box.pack_start(*pMenubar, Gtk::PACK_SHRINK);
+
+  /*
+  Gtk::Widget* pToolbar = m_refUIManager->get_widget("/ToolBar") ;
+  if(pToolbar)
+    m_Box.pack_start(*pToolbar, Gtk::PACK_SHRINK);
+*/
+  m_ScrolledWindow1.add(m_TextView1);
+  m_ScrolledWindow1.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+  m_ScrolledWindow1.set_shadow_type(Gtk::SHADOW_IN);
+/*
+  m_ScrolledWindow2.add(m_TextView2);
+  m_ScrolledWindow2.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+  m_ScrolledWindow2.set_shadow_type(Gtk::SHADOW_IN);
+*/
+//  m_Box2.pack_start(m_ScrolledWindow1, Gtk::PACK_EXPAND_WIDGET);
+//  m_Box2.pack_start(m_ScrolledWindow2, Gtk::PACK_EXPAND_WIDGET);
 
 
-	  //Toolbar:
-	  {
-		m_Table.attach(m_Toolbar,
-					   /* X direction */       /* Y direction */
-					   0, 1,                   1, 2,
-					   Gtk::FILL|Gtk::EXPAND, Gtk::AttachOptions(0)
-					   );
-	  }
+  m_Box.pack_start(m_ScrolledWindow1, Gtk::PACK_EXPAND_WIDGET);
 
 
-	  m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
-	  m_ScrolledWindow.set_shadow_type(Gtk::SHADOW_IN);
-	  m_Table.attach(m_ScrolledWindow,
-					 /* X direction */       /* Y direction */
-					 0, 1,                   2, 3);
 
-	  set_default_size(200, 200);
-
-	  m_ScrolledWindow.add(m_TextView);
+  set_default_size(400, 300);
 
 
-	  /* Create statusbar */
+  /* Create statusbar */
+  m_Box.pack_start(m_Statusbar, Gtk::PACK_SHRINK);
 
-	  m_Table.attach(m_Statusbar,
-					 /* X direction */       /* Y direction */
-					 0, 1,                   3, 4,
-					 Gtk::FILL|Gtk::EXPAND, Gtk::AttachOptions(0)
-					 );
+  /* Show text widget info in the statusbar */
+  Glib::RefPtr<Gtk::TextBuffer> refTextBuffer = m_TextView1.get_buffer();
+  refTextBuffer->signal_changed().connect(sigc::mem_fun(*this, &MainWindow::on_text_changed));
+  refTextBuffer->signal_mark_set().connect(sigc::mem_fun(*this, &MainWindow::on_text_mark_set));
+  on_text_changed();
 
-
-	  /* Show text widget info in the statusbar */
-	  Glib::RefPtr<Gtk::TextBuffer> refTextBuffer = m_TextView.get_buffer();
-	  refTextBuffer->signal_changed().connect(sigc::mem_fun(*this, &MainWindow::on_text_changed));
-	  refTextBuffer->signal_mark_set().connect(sigc::mem_fun(*this, &MainWindow::on_text_mark_set));
-	  on_text_changed();
-
-	  show_all();
-	}
-
-
-//  set_resizable(false);
-  //set_decorated(false);
-//  set_position(Gtk::WIN_POS_CENTER);
+//  show_all();
+  show_all_children();
+}
 
 MainWindow::~MainWindow()
 {
@@ -139,7 +181,7 @@ void MainWindow::on_text_changed()
 {
   m_Statusbar.pop();
 
-  Glib::RefPtr<Gtk::TextBuffer> refBuffer = m_TextView.get_buffer();
+  Glib::RefPtr<Gtk::TextBuffer> refBuffer = m_TextView1.get_buffer();
   gint count = refBuffer->get_char_count();
 
   Gtk::TextBuffer::iterator iter = refBuffer->get_iter_at_mark(refBuffer->get_insert());
@@ -158,4 +200,5 @@ void MainWindow::on_text_mark_set(const Gtk::TextBuffer::iterator&, const Glib::
 {
   on_text_changed();
 }
+
 

@@ -21,12 +21,14 @@ using namespace rapidxml;
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 int main(int argc, char* argv[]) {
+
+
+
+///	MainWindow window;
 	Gtk::Main kit(argc, argv);
 
-	MainWindow window;
-
-	kit.run(window);
-	//Gtk::Window* w = new MainWindow();
+	MainWindow w;
+	kit.run(w);
 	/*
 	try {
 		NewLi::DataResolver r("www.liveinternet.ru", "/offline_main.php");
