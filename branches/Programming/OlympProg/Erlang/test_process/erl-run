@@ -1,0 +1,12 @@
+#!/usr/bin/env escript
+%% -*- erlang -*-
+
+main(_) ->
+    compile:file("test_process.erl"),
+    {_, SecS, MsS} = erlang:now(),
+    
+%    tested:eratos_primes(31623),
+    test_process:start(),
+
+    {_, SecE, MsE} = erlang:now(),
+    io:format("~nExecution Time: ~n ~b Sec ~b Msec ~n", [SecE - SecS, 1000000 + MsE - MsS]).
