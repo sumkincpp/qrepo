@@ -160,7 +160,7 @@ miller_rabin_traverse([H|T], S, P, Acc) ->
     A = random:uniform(P-1), % 1...(P-1)
     {Temp, Mod} = miller_rabin_count_temp_mod(S, pow_mod(A, S, P), P),
     if Mod /= P-1 andalso (Temp rem 2) == 0 -> false;
-       true -> traverse(T, S, P, Acc) 
+       true -> miller_rabin_traverse(T, S, P, Acc) 
     end.
 
 
