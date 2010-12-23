@@ -28,7 +28,7 @@ mlong mulmod(mlong a, mlong b, mlong c){
     return x % c;
     }
 
-const int MRIterations = 5;
+const int MRIterations = 7;
 bool IsMRPrime(long long p, int N){
     if(p < 2 || (p != 2 && p % 2 == 0)) return false;
 
@@ -66,14 +66,14 @@ int main() {
     long long N = 0, M = 0;
 
     while(Cases-- > 0) {
-        in >> N;
-        in >> M;
-        for (int i = N; i <= M; i++) {
+        in >> N >> M;
+        for (long long i = N; i <= M; i++) {
             if (IsMRPrime(i, MRIterations)) {
-                out << i << "\n";
+                out << i << std::endl;
                 }
             }
-        out << "\n";
+//        if (Cases >= 1)
+        out << std::endl;
         }
     #ifdef DEBUG
     int StopSeconds = time(0);
