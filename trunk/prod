@@ -1,2 +1,0 @@
-php wiki-parse.php
-pdflatex -interaction=nonstopmode main.tex 
