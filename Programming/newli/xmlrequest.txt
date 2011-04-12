@@ -1,0 +1,28 @@
+POST ${path} HTTP/1.1
+Host: ${host}
+Accept: */*
+Content-type: multipart/form-data, boundary=WhatYouGetIsWhatYouSee
+Connection: close
+Content-length: ${ContentLength}
+
+--WhatYouGetIsWhatYouSee
+Content-disposition: form-data; name="xmlfile"; filename="xmlfile"
+Content-Type: text/plain
+
+<?xml version="1.0" encoding="windows-1251"?>
+<QUERYS username="LiTester" password="tester" mainid="1">
+ 
+<query QID="1" TYPE="18">
+<id>121417354</id>
+</query>
+
+<query QID="1" TYPE="1">
+<message>тестовое сообщение</message>
+<headerofpost>тем2а</headerofpost>
+<jpostid>121417354</jpostid>
+<attachfile>тема</attachfile>
+<commentsubscribe>1</commentsubscribe>
+</query>
+
+</QUERYS>
+--WhatYouGetIsWhatYouSee--
