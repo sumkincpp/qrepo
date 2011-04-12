@@ -1,0 +1,22 @@
+    try lists:foreach(fun(I) -> 
+            A = random:uniform(P-1), % 1...(P-1)
+            {Temp, Mod} = miller_rabin_count_temp_mod(S, pow_mod(A, S, P), P),
+            if Mod /= P-1 andalso (Temp rem 2) == 0 -> throw(not_prime);
+                   true -> true        
+            end
+        end, lists:seq(1, Its)),
+        true
+    catch
+        throw:not_prime -> 
+            false
+    end.
+
+
+    lists:takewhile(fun(I) -> 
+        A = random:uniform(P-1), % 1...(P-1)
+        {Temp, Mod} = miller_rabin_count_temp_mod(S, pow_mod(A, S, P), P),
+        if Mod /= P-1 andalso (Temp rem 2) == 0 -> false;
+               true -> true        
+        end
+    end, lists:seq(1, Its)).
+
