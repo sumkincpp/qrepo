@@ -1,5 +1,0 @@
-GET ${path} HTTP/1.0
-Host: ${host}
-Accept: */*
-Connection: close
-

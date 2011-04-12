@@ -1,1 +1,0 @@
-bmeps ATICResults.png ATICResults.eps

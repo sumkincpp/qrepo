@@ -1,6 +1,0 @@
-#!/usr/bin/env escript
-%% -*- erlang -*-
-
-main(_) ->
-    compile:file("tested.erl"),
-    tested:main().
